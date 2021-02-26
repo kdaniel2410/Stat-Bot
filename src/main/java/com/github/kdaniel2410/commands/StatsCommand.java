@@ -31,17 +31,20 @@ public class StatsCommand implements CommandExecutor {
             if (!resultSet.next()) {
                 return ":warning: You have not opted in and therefore your stats are not being tracked";
             }
+            int hours = resultSet.getInt("voiceMinutes") / 60;
+            int minutes = resultSet.getInt("voiceMinutes") % 60;
             EmbedBuilder embed = new EmbedBuilder()
                     .setColor(Constants.EMBED_COLOR)
                     .setThumbnail(user.getAvatar())
                     .setDescription(String.format("Username: %s\n" +
                             "User ID: %d\n" +
-                            "Voice Time: %d minutes\n" +
+                            "Voice Time: %d hours and %d minutes\n" +
                             "Message: %d messages\n" +
                             "Reaction: %d reactions\n",
                             user.getName(),
                             resultSet.getLong("userId"),
-                            resultSet.getInt("voiceMinutes"),
+                            hours,
+                            minutes,
                             resultSet.getInt("messageCount"),
                             resultSet.getInt("reactionCount")));
             channel.sendMessage(embed).exceptionally(ExceptionLogger.get());

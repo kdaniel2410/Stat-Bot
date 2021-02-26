@@ -37,7 +37,9 @@ public class LeaderboardCommand implements CommandExecutor {
                 int finalI = i;
                 api.getUserById(resultSet.getLong("userId")).thenAccept(user -> {
                     try {
-                        description.append(String.format("%s: %s with %s minutes\n", finalI, user.getName(), resultSet.getInt("voiceMinutes")));
+                        int hours = resultSet.getInt("voiceMinutes") / 60;
+                        int minutes = resultSet.getInt("voiceMinutes") % 60;
+                        description.append(String.format("%s: %s with %d hours and %d minutes\n", finalI, user.getName(), hours, minutes));
                     } catch (SQLException e) {
                         logger.error(e);
                     }

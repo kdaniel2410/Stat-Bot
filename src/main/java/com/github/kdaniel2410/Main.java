@@ -52,7 +52,7 @@ public class Main {
         commandHandler.registerCommand(new LeaderboardCommand(databaseHandler));
 
         Runnable runnable = () -> api.getServers().forEach(server -> server.getMembers().forEach(member -> {
-            if (member.getConnectedVoiceChannel(server).isPresent() && !member.isMuted(server) || !member.isDeafened(server)) {
+            if (member.getConnectedVoiceChannel(server).isPresent() && !member.isSelfMuted(server) || !member.isSelfDeafened(server)) {
                 try {
                     databaseHandler.incrementField(member.getId(), server.getId(), "voiceMinutes");
                 } catch (SQLException e) {

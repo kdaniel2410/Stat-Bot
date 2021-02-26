@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="Role Bot" status="INFO" strict="true">
+    <Appenders>
+        <Console name="Console Appender">
+            <PatternLayout>
+                <Pattern><![CDATA[%d <%p> <%t> <%c> %m%n]]></Pattern>
+            </PatternLayout>
+            <Filters>
+                <ThresholdFilter level="INFO"/>
+            </Filters>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="Console Appender"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -39,6 +39,12 @@ public class DatabaseHandler {
         statement.executeUpdate();
     }
 
+    public void removeServer(long serverId) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("delete from stats where serverId = ?");
+        statement.setLong(1, serverId);
+        statement.executeUpdate();
+    }
+
     public ResultSet getServerMember(long userId, long serverId) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("select * from stats where userId = ? and serverId = ?");
         statement.setLong(1, userId);

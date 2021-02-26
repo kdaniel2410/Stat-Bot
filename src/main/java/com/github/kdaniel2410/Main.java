@@ -41,7 +41,7 @@ public class Main {
 
         DatabaseHandler databaseHandler = new DatabaseHandler();
         api.addServerJoinListener(new ServerJoinListenerImpl());
-        api.addServerLeaveListener(new ServerLeaveListenerImpl());
+        api.addServerLeaveListener(new ServerLeaveListenerImpl(databaseHandler));
         api.addServerMemberLeaveListener(new ServerMemberLeaveListenerImpl(databaseHandler));
         api.addServerMemberBanListener(new ServerMemberBanListenerImpl(databaseHandler));
         api.addMessageCreateListener(new MessageCreateListenerImpl(databaseHandler));

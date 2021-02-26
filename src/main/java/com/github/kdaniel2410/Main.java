@@ -53,7 +53,7 @@ public class Main {
 
         Runnable runnable = () -> api.getServers().forEach(server -> server.getMembers().forEach(member -> {
             if (member.getConnectedVoiceChannel(server).isPresent()) {
-                if (member.isSelfMuted(server) || member.isSelfDeafened(server)) return;
+                if (member.isMuted(server) || member.isDeafened(server)) return;
                 try {
                     databaseHandler.incrementField(member.getId(), server.getId(), "voiceMinutes");
                 } catch (SQLException e) {

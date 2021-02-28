@@ -18,7 +18,7 @@ public class DatabaseHandler {
                     "voiceMinutes int default 0, " +
                     "messageCount int default 0, " +
                     "reactionCount int default 0)";
-            connection = DriverManager.getConnection("jdbc:h2:./test");
+            connection = DriverManager.getConnection("jdbc:h2:./stats");
             connection.createStatement().executeUpdate(statement);
         } catch (SQLException e) {
             logger.error(e);
